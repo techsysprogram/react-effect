@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 
-function App() {
-  console.log("rendirezar")
-
+const Notification = () => {
   const [count, setCount] = useState(0);
-
-  const [checked, setchecked] = useState(false);
 
   useEffect(() => {
     // effect , osea despues del effect te muestra el valor actual
@@ -26,6 +22,22 @@ function App() {
   }, [count]); // si no le pasas el array vacio se ejecuta cada vez que se renderiza el componente
 
   return (
+  <div className="card">
+    <button onClick={() => setCount((count) => count + 1)}>
+      count is {count}
+    </button>
+  </div>)
+} 
+
+
+
+
+function App() {
+  console.log("rendirezar")
+
+  const [checked, setchecked] = useState(false);
+
+  return (
     <>
       <div>
         <label htmlFor="">
@@ -39,11 +51,7 @@ function App() {
         </label>
       </div>
 
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
+      {checked ? <Notification /> : null}
     </>
   );
 }
